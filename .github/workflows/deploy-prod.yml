@@ -26,8 +26,11 @@ jobs:
       - name: prepare go
         run: |
           go clean
-          go mod download
           go mod tidy
+          go mod download
+  
+      - name: build
+        run: go build ./cmd/lambda/api.go
   
     env:
       STAGE: prod
