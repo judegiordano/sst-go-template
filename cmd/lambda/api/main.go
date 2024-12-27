@@ -1,9 +1,12 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	fiberadapter "github.com/awslabs/aws-lambda-go-api-proxy/fiber"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -12,7 +15,9 @@ import (
 	"github.com/judegiordano/sst_template/pkg/helpers"
 )
 
-func main() {
+var fiberLambda *fiberadapter.FiberLambda
+
+func init() {
 	app := fiber.New(fiber.Config{
 		ErrorHandler:      helpers.ErrorHandler,
 		JSONEncoder:       json.Marshal,
@@ -26,6 +31,14 @@ func main() {
 	app.Use(compress.New())
 	app.Use(recover.New())
 	app.Use(cors.New())
-	lambda.Start(app)
+	fiberLambda = fiberadapter.New(app)
 	// app.Listen(":3000")
+}
+
+func Handler(ctx context.Context, req events.APIGatewayV2HTTPRequest) (events.APIGatewayV2HTTPResponse, error) {
+	return fiberLambda.ProxyWithContextV2(ctx, req)
+}
+
+func main() {
+	lambda.Start(Handler)
 }
