@@ -6,15 +6,22 @@ settings:
 
 dependencies:
   sst:
-    specifier: ^3.4.32
+    specifier: 3.4.32
     version: 3.4.32
 
 devDependencies:
+  '@types/aws-lambda':
+    specifier: 8.10.146
+    version: 8.10.146
   sst-linux-x64:
     specifier: ^3.0.68
     version: 3.0.68
 
 packages:
+
+  /@types/aws-lambda@8.10.146:
+    resolution: {integrity: sha512-3BaDXYTh0e6UCJYL/jwV/3+GRslSc08toAiZSmleYtkAUyV5rtvdPYxrG/88uqvTuT6sb27WE9OS90ZNTIuQ0g==}
+    dev: true
 
   /aws4fetch@1.0.20:
     resolution: {integrity: sha512-/djoAN709iY65ETD6LKCtyyEI04XIBP5xVvfmNxsEP0uJB5tyaGBztSryRr4HqMStr9R06PisQE7m9zDTXKu6g==}
