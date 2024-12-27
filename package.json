@@ -1,0 +1,17 @@
+{
+  "name": "sst_ion_template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sst": "3.4.32"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.146",
+    "sst-linux-x64": "^3.0.68"
+  }
+}

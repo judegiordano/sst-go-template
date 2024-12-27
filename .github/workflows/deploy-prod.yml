@@ -22,18 +22,50 @@ jobs:
         with:
           go-version-file: 'go.mod'
           cache: true
-
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+  
+      - name: get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+  
+      - name: setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+  
       - name: prepare go
         run: |
           go clean
           go mod tidy
           go mod download
   
-      - name: build
+      - name: build lambdas
         run: go build ./cmd/lambda/api.go
+
+      - name: pnpm install
+        run: pnpm install --frozen-lockfile
+
+      - name: sst install providers
+        run: |
+          set -euxo pipefail
+          pnpm sst install
+
+      - name: sst deploy
+        run: |
+          set -euxo pipefail
+          pnpm sst deploy --stage prod
   
     env:
       STAGE: prod
-      # MONGO_URI: ${{ secrets.MONGO_URI }}
-      # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      LOG_LEVEL: info
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

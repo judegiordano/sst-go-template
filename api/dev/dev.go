@@ -9,11 +9,12 @@ type Health struct {
 }
 
 func healthCheck(c *fiber.Ctx) error {
-	c.Status(201)
+	c.Status(418)
 	return c.JSON(Health{Message: "☕"})
 }
 
 func Router(r fiber.Router) {
 	handler := r.Group("/dev")
+	// routes
 	handler.Get("/health", healthCheck)
 }
