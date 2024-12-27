@@ -23,7 +23,7 @@ export default $config({
       memory: '500 MB',
       timeout: '10 minutes',
       url: { cors: true },
-      handler: "cmd/lambda/api.go",
+      handler: "cmd/lambda/api",
       logging: {
         retention: '1 week',
         format: 'json'
