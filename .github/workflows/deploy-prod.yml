@@ -48,9 +48,6 @@ jobs:
           go mod tidy
           go mod download
   
-      - name: build lambdas
-        run: go build ./cmd/lambda/api.go
-
       - name: pnpm install
         run: pnpm install --frozen-lockfile
 
