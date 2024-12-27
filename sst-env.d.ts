@@ -6,5 +6,14 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
+    "go-api": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "go-router": {
+      "type": "sst.aws.Router"
+      "url": string
+    }
   }
 }
