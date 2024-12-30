@@ -4,6 +4,8 @@ go 1.23
 
 require github.com/charmbracelet/log v0.4.0
 
+require github.com/joho/godotenv v1.5.1 // indirect
+
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/aws/aws-lambda-go v1.47.0

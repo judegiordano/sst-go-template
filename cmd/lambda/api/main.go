@@ -12,14 +12,18 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/judegiordano/sst_template/api/dev"
-	"github.com/judegiordano/sst_template/pkg/helpers"
+	"github.com/judegiordano/sst_template/internal"
+	"github.com/judegiordano/sst_template/pkg/errors"
+	"github.com/judegiordano/sst_template/pkg/logger"
 )
 
 var fiberLambda *fiberadapter.FiberLambda
+var app *fiber.App
 
 func init() {
-	app := fiber.New(fiber.Config{
-		ErrorHandler:      helpers.ErrorHandler,
+	logger.SetLogLevel(internal.Env.LogLevel)
+	app = fiber.New(fiber.Config{
+		ErrorHandler:      errors.ErrorHandler,
 		JSONEncoder:       json.Marshal,
 		JSONDecoder:       json.Unmarshal,
 		EnablePrintRoutes: false,
@@ -32,7 +36,6 @@ func init() {
 	app.Use(recover.New())
 	app.Use(cors.New())
 	fiberLambda = fiberadapter.New(app)
-	// app.Listen(":3000")
 }
 
 func Handler(ctx context.Context, req events.APIGatewayV2HTTPRequest) (events.APIGatewayV2HTTPResponse, error) {
@@ -40,5 +43,9 @@ func Handler(ctx context.Context, req events.APIGatewayV2HTTPRequest) (events.AP
 }
 
 func main() {
+	if internal.Env.Stage == internal.LocalStage {
+		app.Listen(":3000")
+		return
+	}
 	lambda.Start(Handler)
 }

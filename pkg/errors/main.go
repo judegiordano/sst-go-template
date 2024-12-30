@@ -1,8 +1,8 @@
-package helpers
+package errors
 
 import (
-	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
+	"github.com/judegiordano/sst_template/pkg/logger"
 )
 
 type ErrorResponse struct {
@@ -16,7 +16,7 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 		code = e.Code
 		message = e.Message
 	}
-	log.Error(code, message)
+	logger.Error(code, message)
 	return ctx.Status(code).JSON(ErrorResponse{
 		Error: message,
 	})
