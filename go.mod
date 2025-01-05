@@ -4,7 +4,11 @@ go 1.23
 
 require github.com/charmbracelet/log v0.4.0
 
-require github.com/joho/godotenv v1.5.1 // indirect
+require (
+	github.com/joho/godotenv v1.5.1 // indirect
+	github.com/philhofer/fwd v1.1.2 // indirect
+	github.com/tinylib/msgp v1.1.8 // indirect
+)
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
