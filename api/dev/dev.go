@@ -9,7 +9,7 @@ type Health struct {
 }
 
 func healthCheck(c *fiber.Ctx) error {
-	c.Status(418)
+	c.Status(200)
 	return c.JSON(Health{Message: "☕"})
 }
 
