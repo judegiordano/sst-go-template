@@ -4,5 +4,8 @@
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file"
-    }
+    },
+    "cSpell.words": [
+        "fibererrors"
+    ]
 }

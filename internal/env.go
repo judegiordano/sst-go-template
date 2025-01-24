@@ -3,8 +3,7 @@ package internal
 import (
 	"strings"
 
-	"github.com/charmbracelet/log"
-	"github.com/judegiordano/sst_template/pkg/dotenv"
+	"github.com/judegiordano/gogetem/pkg/dotenv"
 )
 
 type Stage string
@@ -27,27 +26,17 @@ func (c Stage) String() string {
 }
 
 type Environment struct {
-	LogLevel log.Level `json:"log_level"`
-	Stage    Stage     `json:"stage"`
+	Stage Stage `json:"stage"`
 }
 
 var Env Environment
 
-func logLevel() log.Level {
-	switch strings.ToUpper(dotenv.RequiredString("LOG_LEVEL")) {
-	case "DEBUG":
-		return log.DebugLevel
-	case "WARN":
-		return log.WarnLevel
-	case "INFO":
-		return log.InfoLevel
-	default:
-		return log.ErrorLevel
-	}
-}
-
 func stage() Stage {
-	val := strings.ToUpper(dotenv.RequiredString("STAGE"))
+	stage := dotenv.String("STAGE")
+	if stage == nil {
+		return LocalStage
+	}
+	val := strings.ToUpper(*stage)
 	switch val {
 	case "LOCAL":
 		return LocalStage
@@ -61,9 +50,7 @@ func stage() Stage {
 }
 
 func init() {
-	dotenv.Load()
 	Env = Environment{
-		LogLevel: logLevel(),
-		Stage:    stage(),
+		Stage: stage(),
 	}
 }
