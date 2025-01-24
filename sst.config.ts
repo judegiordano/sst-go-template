@@ -14,6 +14,7 @@ export default $config({
     const { stage } = $app
     const environment = {
       STAGE: stage,
+      MONGO_URI: process.env.MONGO_URI,
       LOG_LEVEL: process.env.LOG_LEVEL
     }
 
