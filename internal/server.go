@@ -14,6 +14,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/etag"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
+	"github.com/gofiber/fiber/v2/middleware/monitor"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/gofiber/fiber/v2/utils"
 
@@ -35,6 +36,7 @@ func init() {
 		JSONDecoder:       json.Unmarshal,
 		EnablePrintRoutes: false,
 	})
+	App.Get("/metrics", monitor.New(monitor.Config{Title: "API Monitor"}))
 	// middleware
 	App.Use(compress.New())
 	App.Use(recover.New())
@@ -45,7 +47,7 @@ func init() {
 		Next: func(c *fiber.Ctx) bool {
 			return c.IP() == "127.0.0.1"
 		},
-		Max:        100,
+		Max:        60,
 		Expiration: 1 * time.Minute,
 		LimitReached: func(c *fiber.Ctx) error {
 			return fibererrors.TooManyRequests(c, errors.New("too many requests"))

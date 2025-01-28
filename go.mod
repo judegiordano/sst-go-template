@@ -7,7 +7,7 @@ require (
 	github.com/awslabs/aws-lambda-go-api-proxy v0.16.2
 	github.com/gofiber/fiber/v2 v2.52.6
 	github.com/golang-module/carbon v1.7.3
-	github.com/judegiordano/gogetem v1.4.0
+	github.com/judegiordano/gogetem v1.5.0
 	go.mongodb.org/mongo-driver v1.17.2
 )
 

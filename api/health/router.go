@@ -32,7 +32,7 @@ func list(c *fiber.Ctx) error {
 	if err != nil {
 		return fibererrors.BadRequest(c, err)
 	}
-	middleware.Cache(c, time.Minute*5)
+	middleware.Cache(c, time.Minute)
 	return c.JSON(docs)
 }
 
