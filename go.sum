@@ -39,8 +39,8 @@ github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANyt
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
 github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
-github.com/judegiordano/gogetem v1.5.0 h1:Ulvp35pCS7bDGlQHGC6lQ4nGStcfJ++5fXJhNm7D2Cs=
-github.com/judegiordano/gogetem v1.5.0/go.mod h1:JPTvdIJgGFTwAYOaYDUjZBrvonQdTuKGhVT8jMTnKVs=
+github.com/judegiordano/gogetem v1.6.0 h1:XwnjHa99C5oz682pvFHVV6wzj/yWnpLXxUguENmnI8I=
+github.com/judegiordano/gogetem v1.6.0/go.mod h1:JPTvdIJgGFTwAYOaYDUjZBrvonQdTuKGhVT8jMTnKVs=
 github.com/karrick/godirwalk v1.10.12/go.mod h1:RoGL9dQei4vP9ilrpETWE8CLOZ1kiN0LhBygSwrAsHA=
 github.com/klauspost/compress v1.17.9 h1:6KIumPrER1LHsvBVuDa0r5xaG0Es51mhhB9BQB2qeMA=
 github.com/klauspost/compress v1.17.9/go.mod h1:Di0epgTjJY877eYKx5yC51cX2A2Vl2ibi7bDH9ttBbw=

@@ -21,10 +21,11 @@ export default $config({
     const api = new sst.aws.Function("go-api", {
       runtime: "go",
       architecture: "arm64",
-      memory: '500 MB',
+      memory: '1 GB',
       timeout: '10 minutes',
       url: { cors: true },
-      handler: "./cmd/lambda/api/main.go",
+      // handler: "./cmd/lambda/api/main.go",
+      handler: "./TEST/cmd/api/lambda/main.go",
       logging: {
         retention: '1 week',
         format: 'json'

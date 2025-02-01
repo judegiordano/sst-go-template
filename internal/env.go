@@ -26,7 +26,8 @@ func (c Stage) String() string {
 }
 
 type Environment struct {
-	Stage Stage `json:"stage"`
+	Stage    Stage  `json:"stage"`
+	MongoUri string `json:"mongo_uri"`
 }
 
 var Env Environment
@@ -51,6 +52,7 @@ func stage() Stage {
 
 func init() {
 	Env = Environment{
-		Stage: stage(),
+		Stage:    stage(),
+		MongoUri: *dotenv.String("MONGO_URI"),
 	}
 }
