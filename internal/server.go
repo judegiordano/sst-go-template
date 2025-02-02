@@ -46,6 +46,7 @@ func Server() *fiber.App {
 		LimitReached: func(c *fiber.Ctx) error {
 			return fibererrors.TooManyRequests(c, errors.New("too many requests"))
 		},
+		LimiterMiddleware: limiter.SlidingWindow{},
 	}))
 	app.Use(cache.New(cache.Config{
 		KeyGenerator: func(c *fiber.Ctx) string {
