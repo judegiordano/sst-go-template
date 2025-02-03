@@ -9,5 +9,8 @@ import (
 
 func main() {
 	handler := internal.Server()
-	lambda.Start(httpadapter.New(handler).ProxyWithContext)
+
+	lambda.Start(httpadapter.NewV2(handler).ProxyWithContext)
+
+	// lambda.Start(httpadapter.New(handler).ProxyWithContext)
 }
