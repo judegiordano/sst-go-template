@@ -16,6 +16,6 @@ func ping(w http.ResponseWriter, r *http.Request) {
 
 func Router() http.Handler {
 	r := http.NewServeMux()
-	r.HandleFunc("GET /ping", ping)
+	r.HandleFunc("/ping", ping)
 	return r
 }
