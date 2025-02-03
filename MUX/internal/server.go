@@ -3,9 +3,9 @@ package internal
 import (
 	"net/http"
 
-	"github.com/judegiordano/sst_template/TEST/controllers/admin"
-	"github.com/judegiordano/sst_template/TEST/controllers/dev"
-	"github.com/judegiordano/sst_template/TEST/middleware"
+	"github.com/judegiordano/sst_template/MUX/controllers/admin"
+	"github.com/judegiordano/sst_template/MUX/controllers/dev"
+	"github.com/judegiordano/sst_template/MUX/middleware"
 )
 
 func Server() http.Handler {

@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/judegiordano/sst_template/TEST/internal"
+	"github.com/judegiordano/sst_template/MUX/internal"
 
 	"github.com/judegiordano/gogetem/pkg/logger"
 )

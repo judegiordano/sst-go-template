@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/judegiordano/sst_template/TEST/middleware"
+	"github.com/judegiordano/sst_template/MUX/middleware"
 )
 
 type Ping struct {

@@ -3,7 +3,7 @@ package dev
 import (
 	"net/http"
 
-	"github.com/judegiordano/sst_template/TEST/responses"
+	"github.com/judegiordano/sst_template/MUX/responses"
 )
 
 type Ping struct {
